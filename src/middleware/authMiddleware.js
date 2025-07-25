@@ -11,7 +11,11 @@ function verificarToken(req, res, next) {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; 
+    req.user = {
+      id: decoded.userId,
+      username: decoded.username,
+      admin: decoded.admin
+    };
     next();
   } catch (error) {
     return res.status(401).json({ message: "Token inválido" });
