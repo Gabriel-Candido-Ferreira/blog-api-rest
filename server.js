@@ -1,9 +1,10 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const sequelize = require('./src/config/database');
+const sequelize = require('./src/config/db'); 
 
 const authRoutes = require('./src/routes/authRoutes');
+const postRoutes = require('./src/routes/postRoutes'); 
 const User = require('./src/models/User');
 const bcrypt = require('bcryptjs');
 
@@ -15,6 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth', authRoutes);
+app.use('/api/posts', postRoutes); 
 
 async function criarAdminPadrao() {
   const adminExiste = await User.findOne({ admin: true });
@@ -39,7 +41,10 @@ async function startServer() {
     console.log('MongoDB conectado');
 
     await sequelize.authenticate();
-    console.log('Postgres conectado');
+    console.log('PostgreSQL conectado');
+
+    await sequelize.sync({ alter: true });
+    console.log('Tabelas sincronizadas no PostgreSQL');
 
     await criarAdminPadrao();
 
