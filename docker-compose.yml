@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: app-node
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+      - postgres
+    networks:
+      - minha-rede
+
+  mongo:
+    image: mongo
+    container_name: meu-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - minha-rede
+
+  postgres:
+    image: postgres
+    container_name: meu-postgres
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - minha-rede
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: meu-pgadmin
+    env_file:
+      - .env
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+    networks:
+      - minha-rede
+
+volumes:
+  mongo-data:
+  postgres-data:
+
+networks:
+  minha-rede:
+    driver: bridge
