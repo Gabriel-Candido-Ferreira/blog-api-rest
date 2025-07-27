@@ -1,6 +1,4 @@
 
----
-
 ```markdown
 # 📦 API de Autenticação, Posts e Comentários
 
