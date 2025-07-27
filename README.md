@@ -25,6 +25,13 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 
 ---
 
+## ⚙️ Pré-requisitos
+- Docker
+- Docker Compose
+- Git
+
+---
+
 ## 📁 Estrutura do Projeto
 
 ```plaintext
