@@ -13,7 +13,23 @@ const { verificarToken } = require('../middleware/authMiddleware');
 
 /**
  * @swagger
- * /api/post/{postId}/comments:
+ * components:
+ *   schemas:
+ *     CommentInput:
+ *       type: object
+ *       required:
+ *         - content
+ *       properties:
+ *         content:
+ *           type: string
+ *           description: Conteúdo do comentário
+ *       example:
+ *         content: Este é um comentário
+ */
+
+/**
+ * @swagger
+ * /api/posts/{postId}/comments:
  *   post:
  *     summary: Cria um comentário para um post
  *     tags: [Comments]
@@ -26,6 +42,13 @@ const { verificarToken } = require('../middleware/authMiddleware');
  *         schema:
  *           type: string
  *         description: ID do post
+ *     requestBody:
+ *       description: Dados do comentário
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CommentInput'
  *     responses:
  *       201:
  *         description: Comentário criado
@@ -36,7 +59,7 @@ router.post('/:postId/comments', verificarToken, commentController.createComment
 
 /**
  * @swagger
- * /api/post/{postId}/comments:
+ * /api/posts/{postId}/comments:
  *   get:
  *     summary: Lista comentários de um post
  *     tags: [Comments]
@@ -55,7 +78,7 @@ router.get('/:postId/comments', commentController.getCommentsByPost);
 
 /**
  * @swagger
- * /api/comments/{id}:
+ * /api/posts/comments/{id}:
  *   put:
  *     summary: Atualiza um comentário pelo ID
  *     tags: [Comments]
@@ -68,17 +91,28 @@ router.get('/:postId/comments', commentController.getCommentsByPost);
  *         schema:
  *           type: string
  *         description: ID do comentário
+ *     requestBody:
+ *       description: Dados para atualizar o comentário
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CommentInput'
  *     responses:
  *       200:
  *         description: Comentário atualizado com sucesso
  *       401:
  *         description: Não autorizado
+ *       403:
+ *         description: Sem permissão para editar
+ *       404:
+ *         description: Comentário não encontrado
  */
 router.put('/comments/:id', verificarToken, commentController.updateComment);
 
 /**
  * @swagger
- * /api/comments/{id}:
+ * /api/posts/comments/{id}:
  *   delete:
  *     summary: Remove um comentário pelo ID
  *     tags: [Comments]
@@ -96,6 +130,10 @@ router.put('/comments/:id', verificarToken, commentController.updateComment);
  *         description: Comentário removido com sucesso
  *       401:
  *         description: Não autorizado
+ *       403:
+ *         description: Sem permissão para deletar
+ *       404:
+ *         description: Comentário não encontrado
  */
 router.delete('/comments/:id', verificarToken, commentController.deleteComment);
 

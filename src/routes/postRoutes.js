@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {verificarToken} = require('../middleware/authMiddleware'); 
+const { verificarToken } = require('../middleware/authMiddleware'); 
 const postController = require('../controllers/postController');
 
 /**
@@ -12,12 +12,40 @@ const postController = require('../controllers/postController');
 
 /**
  * @swagger
+ * components:
+ *   schemas:
+ *     PostInput:
+ *       type: object
+ *       required:
+ *         - title
+ *         - content
+ *       properties:
+ *         title:
+ *           type: string
+ *           description: Título do post
+ *         content:
+ *           type: string
+ *           description: Conteúdo do post
+ *       example:
+ *         title: Meu título
+ *         content: Conteúdo do post
+ */
+
+/**
+ * @swagger
  * /api/posts:
  *   post:
  *     summary: Cria um novo post
  *     tags: [Posts]
  *     security:
  *       - bearerAuth: []
+ *     requestBody:
+ *       description: Dados para criar um post
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PostInput'
  *     responses:
  *       201:
  *         description: Post criado com sucesso
@@ -82,6 +110,13 @@ router.get('/:id', verificarToken, postController.getPostById);
  *           type: string
  *         required: true
  *         description: ID do post a ser atualizado
+ *     requestBody:
+ *       description: Dados para atualizar o post
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PostInput'
  *     responses:
  *       200:
  *         description: Post atualizado com sucesso
@@ -108,7 +143,7 @@ router.put('/:id', verificarToken, postController.updatePost);
  *         required: true
  *         description: ID do post a ser removido
  *     responses:
- *       200:
+ *       204:
  *         description: Post removido com sucesso
  *       404:
  *         description: Post não encontrado
@@ -116,6 +151,5 @@ router.put('/:id', verificarToken, postController.updatePost);
  *         description: Não autorizado
  */
 router.delete('/:id', verificarToken, postController.deletePost);
-
 
 module.exports = router;

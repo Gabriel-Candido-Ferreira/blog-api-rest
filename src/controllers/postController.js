@@ -47,7 +47,7 @@ exports.deletePost = async (req, res) => {
     if (!post) return res.status(404).json({ message: 'Post não encontrado' });
 
     await post.destroy();
-    res.status(204).end();
+    res.status(200).json({ message: 'Post deletado com sucesso' });
   } catch (error) {
     res.status(500).json({ message: 'Erro ao deletar post', error });
   }
