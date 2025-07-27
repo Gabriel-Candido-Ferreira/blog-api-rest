@@ -1,4 +1,3 @@
-
 # 📦 API de Autenticação, Posts e Comentários
 
 Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicação permite o registro e autenticação de usuários, criação de posts e comentários, além de funcionalidades administrativas.
@@ -7,13 +6,24 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 
 ## 🚀 Tecnologias Utilizadas
 
-- Node.js + Express
-- MongoDB
-- PostgreSQL
-- JWT para autenticação
-- Docker + Docker Compose
-- pgAdmin
+- Node.js + Express  
+- MongoDB  
+- PostgreSQL  
+- JWT para autenticação  
+- Docker + Docker Compose  
+- pgAdmin  
 - Swagger para documentação da API
+
+---
+
+## 🔧 Versões e Dependências
+
+- Docker Compose: v2.38.2  
+- Node.js: v22.17.1  
+- MongoDB (container): 8.0.12  
+- PostgreSQL (container): 17.5  
+
+> As imagens Docker usadas para MongoDB e PostgreSQL normalmente puxam a última versão estável, a menos que você fixe uma tag específica no `docker-compose.yml`.
 
 ---
 
