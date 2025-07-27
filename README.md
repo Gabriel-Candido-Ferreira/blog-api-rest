@@ -1,3 +1,6 @@
+
+---
+
 # 📦 API de Autenticação, Posts e Comentários
 
 Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicação permite o registro e autenticação de usuários, criação de posts e comentários, além de funcionalidades administrativas.
@@ -6,29 +9,30 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 
 ## 🚀 Tecnologias Utilizadas
 
-- Node.js + Express  
-- MongoDB  
-- PostgreSQL  
-- JWT para autenticação  
-- Docker + Docker Compose  
-- pgAdmin  
-- Swagger para documentação da API
+* Node.js + Express
+* MongoDB
+* PostgreSQL
+* JWT para autenticação
+* Docker + Docker Compose
+* pgAdmin
+* Swagger para documentação da API
 
 ---
 
 ## 🔧 Versões e Dependências
 
-- Docker Compose: v2.38.2  
-- Node.js: v22.17.1  
-- MongoDB (container): 8.0.12  
-- PostgreSQL (container): 17.5  
+* Docker Compose: v2.38.2
+* Node.js: v22.17.1
+* MongoDB (container): 8.0.12
+* PostgreSQL (container): 17.5
 
 ---
 
 ## ⚙️ Pré-requisitos
-- Docker
-- Docker Compose
-- Git
+
+* Docker
+* Docker Compose
+* Git
 
 ---
 
@@ -75,7 +79,7 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 ```bash
 git clone git@github.com:Gabriel-Candido-Ferreira/blog-api-rest.git
 cd blog-api-rest
-````
+```
 
 2. **Configure as variáveis de ambiente:**
 
@@ -90,6 +94,18 @@ docker-compose up --build
 ```
 
 A API estará disponível em: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 👤 Usuário Admin Padrão para Testes
+
+Ao iniciar a aplicação, o sistema cria automaticamente um usuário administrador padrão para facilitar os testes iniciais, caso ainda não exista um.
+As credenciais desse usuário são:
+
+* **Username:** `admin`
+* **Senha:** `admin123`
+
+Esse usuário possui permissão administrativa completa.
 
 ---
 
@@ -157,3 +173,5 @@ Para encerrar a aplicação:
 ```bash
 docker-compose down
 ```
+
+---
