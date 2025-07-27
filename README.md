@@ -23,8 +23,6 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 - MongoDB (container): 8.0.12  
 - PostgreSQL (container): 17.5  
 
-> As imagens Docker usadas para MongoDB e PostgreSQL normalmente puxam a última versão estável, a menos que você fixe uma tag específica no `docker-compose.yml`.
-
 ---
 
 ## 📁 Estrutura do Projeto
