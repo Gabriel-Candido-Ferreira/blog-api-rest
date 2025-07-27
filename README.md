@@ -139,6 +139,7 @@ Acesse a documentação da API para explorar os endpoints:
 
   * **Host:** `meu-postgres`
   * **Porta:** `5432`
+  * **Usuário e senha:**  `do .env`
 
 ---
 
