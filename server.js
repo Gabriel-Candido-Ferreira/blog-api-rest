@@ -2,16 +2,18 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const sequelize = require('./src/config/db'); 
+const bcrypt = require('bcryptjs');
+const User = require('./src/models/User');
 
 const authRoutes = require('./src/routes/authRoutes');
 const postRoutes = require('./src/routes/postRoutes'); 
 const commentRoutes = require('./src/routes/commentRoutes');
-const User = require('./src/models/User');
-const bcrypt = require('bcryptjs');
 
+const { swaggerUi, swaggerSpec } = require('./src/config/swagger');
 
 const app = express();
 app.use(express.json());
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/', (req, res) => {
   res.send('API rodando!');
@@ -53,6 +55,7 @@ async function startServer() {
 
     app.listen(process.env.PORT, () => {
       console.log(`Servidor rodando na porta ${process.env.PORT}`);
+      console.log(`Documentação Swagger disponível em http://localhost:${process.env.PORT}/api-docs`);
     });
   } catch (err) {
     console.error('Erro na inicialização:', err);
