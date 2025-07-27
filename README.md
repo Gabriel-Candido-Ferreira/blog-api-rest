@@ -146,13 +146,5 @@ docker-compose down
 
 ---
 
-## 📄 Licença
-
-MIT
-
-```
-
----
-
 Se quiser, posso gerar esse conteúdo como um arquivo `.md` para download ou já pronto para subir no GitHub. Deseja que eu faça isso?
 ```
