@@ -13,7 +13,7 @@ const { verificarToken } = require('../middleware/authMiddleware');
 
 /**
  * @swagger
- * /api/{postId}/comments:
+ * /api/post/{postId}/comments:
  *   post:
  *     summary: Cria um comentário para um post
  *     tags: [Comments]
@@ -36,7 +36,7 @@ router.post('/:postId/comments', verificarToken, commentController.createComment
 
 /**
  * @swagger
- * /api/{postId}/comments:
+ * /api/post/{postId}/comments:
  *   get:
  *     summary: Lista comentários de um post
  *     tags: [Comments]

@@ -12,7 +12,7 @@ const postController = require('../controllers/postController');
 
 /**
  * @swagger
- * /api/posts/create:
+ * /api/posts:
  *   post:
  *     summary: Cria um novo post
  *     tags: [Posts]
@@ -24,7 +24,7 @@ const postController = require('../controllers/postController');
  *       401:
  *         description: Não autorizado
  */
-router.post('/create', verificarToken, postController.createPost);
+router.post('/', verificarToken, postController.createPost);
 
 /**
  * @swagger
