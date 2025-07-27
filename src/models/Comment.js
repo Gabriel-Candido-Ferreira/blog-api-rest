@@ -10,6 +10,12 @@ const Comment = sequelize.define('Comment', {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  userId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  }
+}, {
+  timestamps: true
 });
 
 module.exports = Comment;
