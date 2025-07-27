@@ -1,5 +1,4 @@
 
-```markdown
 # 📦 API de Autenticação, Posts e Comentários
 
 Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicação permite o registro e autenticação de usuários, criação de posts e comentários, além de funcionalidades administrativas.
@@ -20,8 +19,8 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 
 ## 📁 Estrutura do Projeto
 
-```
-
+```plaintext
+.
 ├── docker-compose.yml
 ├── Dockerfile
 ├── LICENSE
@@ -30,28 +29,27 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 ├── README.md
 ├── server.js
 └── src
-├── config
-│   ├── config.js
-│   ├── db.js
-│   └── swagger.js
-├── controllers
-│   ├── authController.js
-│   ├── commentController.js
-│   └── postController.js
-├── middleware
-│   ├── authMiddleware.js
-│   └── validateUser.js
-├── models
-│   ├── Comment.js
-│   ├── index.js
-│   ├── Post.js
-│   └── User.js
-└── routes
-├── authRoutes.js
-├── commentRoutes.js
-└── postRoutes.js
-
-````
+    ├── config
+    │   ├── config.js
+    │   ├── db.js
+    │   └── swagger.js
+    ├── controllers
+    │   ├── authController.js
+    │   ├── commentController.js
+    │   └── postController.js
+    ├── middleware
+    │   ├── authMiddleware.js
+    │   └── validateUser.js
+    ├── models
+    │   ├── Comment.js
+    │   ├── index.js
+    │   ├── Post.js
+    │   └── User.js
+    └── routes
+        ├── authRoutes.js
+        ├── commentRoutes.js
+        └── postRoutes.js
+```
 
 ---
 
@@ -60,8 +58,8 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 1. **Clone o repositório:**
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone git@github.com:Gabriel-Candido-Ferreira/blog-api-rest.git
+cd blog-api-rest
 ````
 
 2. **Configure as variáveis de ambiente:**
