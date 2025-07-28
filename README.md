@@ -72,24 +72,105 @@ Esta é uma API RESTful desenvolvida como parte de um teste técnico. A aplicaç
 
 ## ⚙️ Como Executar
 
-1. **Clone o repositório:**
+### 1. Clone o repositório e entre na pasta
+
+Escolha uma das opções:
+
+**Via SSH:**
 
 ```bash
 git clone git@github.com:Gabriel-Candido-Ferreira/blog-api-rest.git
 cd blog-api-rest
 ```
 
-2. **Configure as variáveis de ambiente:**
+**Ou via HTTPS:**
 
-Um arquivo `.env` já está incluso neste repositório **apenas para facilitar os testes locais**.
+```bash
+git clone https://github.com/Gabriel-Candido-Ferreira/blog-api-rest.git
+cd blog-api-rest
+```
 
-3. **Execute com Docker Compose:**
+---
+
+### 2. Verifique se as portas estão disponíveis
+
+Os serviços utilizam as seguintes portas:
+
+| Serviço    | Porta |
+| ---------- | ----- |
+| Node.js    | 3000  |
+| MongoDB    | 27017 |
+| PostgreSQL | 5432  |
+| pgAdmin    | 80    |
+
+Para verificar se uma porta está em uso:
+
+```bash
+sudo lsof -i :5432       # Substitua pela porta desejada
+```
+
+Para encerrar um serviço que esteja em uso (exemplo com PostgreSQL local):
+
+```bash
+sudo systemctl stop postgresql
+```
+
+Você também pode alterar as portas no `docker-compose.yml` conforme sua necessidade.
+
+---
+
+### 3. Configure as variáveis de ambiente
+
+Um arquivo `.env` já está incluído neste repositório **apenas para facilitar os testes locais**.
+Verifique se os valores estão adequados:
+
+```env
+MONGO_URI=mongodb://meu-mongo:27017/authdb
+JWT_SECRET=...
+JWT_EXPIRES=1h
+PORT=3000
+
+DB_HOST=meu-postgres
+DB_USER=seu_usuario
+DB_PASSWORD=sua_senha
+DB_NAME=blogapi
+DB_PORT=5432
+
+PGADMIN_DEFAULT_EMAIL=admin@admin.com
+PGADMIN_DEFAULT_PASSWORD=admin
+
+POSTGRES_USER=...
+POSTGRES_PASSWORD=...
+POSTGRES_DB=blogapi
+```
+
+---
+
+### 4. Suba os containers com Docker Compose
 
 ```bash
 docker-compose up --build
 ```
 
 A API estará disponível em: [http://localhost:3000](http://localhost:3000)
+
+---
+
+### ⚠️ Importante: alteração de portas
+
+Se você modificar as portas no `docker-compose.yml`, certifique-se de revisar também o `.env`.
+
+#### Exemplos:
+
+**Caso altere no `docker-compose.yml`:**
+
+```yaml
+ports:
+  - "3001:3000"
+```
+
+**Acesso local:** `http://localhost:3001`
+**No `.env`:** pode manter `PORT=3000` (pois é a porta interna usada pelo Express)
 
 ---
 
@@ -170,3 +251,4 @@ Para encerrar a aplicação:
 docker-compose down
 ```
 
+---
